@@ -8,15 +8,24 @@ class App extends React.Component {
     super (props);
     this.state = {
       shoppingList: [
-        "pomidror", "cola", "papier"
+        "pomidor", "cola", "papier"
       ]
     }
   }
+
+  addNewItemToShoppingList = (item) => {
+    this.setState (prevState => {
+const newShoppingList = [...prevState.shoppingList, item];
+  return {shoppingList: newShoppingList};
+    })
+  }
+
+  
   render() {
     const {shoppingList} = this.state;
     return (
       <div>
-      <Header></Header>
+      <Header onItemAdded= {this.addNewItemToShoppingList}></Header>
       <ShopList shoppingList = {shoppingList}></ShopList>
       </div>
     )
