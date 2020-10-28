@@ -6,9 +6,9 @@ class AlreadyBought extends React.Component {
         return (
             <div class = "bought">
                 <ul class = "bought__list">
-                    <li class = "bought__item"></li>
-                    <li class = "bought__item"></li>
-                    <li class = "bought__item"></li>
+                    <li class = "bought__item">cukier</li>
+                    <li class = "bought__item">kawa</li>
+                    <li class = "bought__item">cukierki</li>
                 </ul>
             </div>
         )

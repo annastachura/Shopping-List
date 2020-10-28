@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from "./Components/Header";
 import ShopList from "./Components/ShopList";
+import AlreadyBought from "./Components/AlreadyBought";
 import './App.css';
 
 class App extends React.Component {
@@ -27,6 +28,7 @@ const newShoppingList = [...prevState.shoppingList, item];
       <div>
       <Header onItemAdded= {this.addNewItemToShoppingList}></Header>
       <ShopList shoppingList = {shoppingList}></ShopList>
+      <AlreadyBought></AlreadyBought>
       </div>
     )
   }
