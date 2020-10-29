@@ -8,12 +8,8 @@ class App extends React.Component {
   constructor(props) {
     super (props);
     this.state = {
-      shoppingList: [
-        "pomidor", "cola", "papier"
-      ],
-      alreadyBoughtList: [
-        "cukier", "kawa"
-      ]
+      shoppingList: [ ],
+      alreadyBoughtList: [ ]
     }
   }
 
