@@ -3,12 +3,14 @@ import React from "react";
 
 class AlreadyBought extends React.Component {
     render() {
+        const {alreadyBoughtList} = this.props;
+        const alreadyBoughtItem = alreadyBoughtList.map((item) => {
+        return <li className = "bought__item">{item}</li>
+        })
         return (
-            <div class = "bought">
-                <ul class = "bought__list">
-                    <li class = "bought__item">cukier</li>
-                    <li class = "bought__item">kawa</li>
-                    <li class = "bought__item">cukierki</li>
+            <div className = "bought">
+                <ul className = "bought__list">
+                    {alreadyBoughtItem}
                 </ul>
             </div>
         )

@@ -10,6 +10,9 @@ class App extends React.Component {
     this.state = {
       shoppingList: [
         "pomidor", "cola", "papier"
+      ],
+      alreadyBoughtList: [
+        "cukier", "kawa"
       ]
     }
   }
@@ -21,14 +24,26 @@ const newShoppingList = [...prevState.shoppingList, item];
     })
   }
 
+  moveItemToAlreadyBought = (item) => {
+    this.setState (prevState => {
+      const newShoppingList= prevState.shoppingList.filter((value) => {
+        return item != value;
+      })
+      return {
+        shoppingList: newShoppingList,
+        alreadyBoughtList: [...prevState.alreadyBoughtList, item]
+      };
+    })
+  }
+
   
   render() {
-    const {shoppingList} = this.state;
+    const {shoppingList, alreadyBoughtList} = this.state;
     return (
       <div>
       <Header onItemAdded= {this.addNewItemToShoppingList}></Header>
-      <ShopList shoppingList = {shoppingList}></ShopList>
-      <AlreadyBought></AlreadyBought>
+      <ShopList onItemRemoved = {this.moveItemToAlreadyBought}shoppingList = {shoppingList}></ShopList>
+      <AlreadyBought alreadyBoughtList = {alreadyBoughtList}></AlreadyBought>
       </div>
     )
   }
