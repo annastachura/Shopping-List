@@ -6,23 +6,23 @@ import './App.css';
 
 class App extends React.Component {
   constructor(props) {
-    super (props);
+    super(props);
     this.state = {
-      shoppingList: [ ],
-      alreadyBoughtList: [ ]
+      shoppingList: [],
+      alreadyBoughtList: []
     }
   }
 
   addNewItemToShoppingList = (item) => {
-    this.setState (prevState => {
-const newShoppingList = [...prevState.shoppingList, item];
-  return {shoppingList: newShoppingList};
+    this.setState(prevState => {
+      const newShoppingList = [...prevState.shoppingList, item];
+      return { shoppingList: newShoppingList };
     })
   }
 
   moveItemToAlreadyBought = (item) => {
-    this.setState (prevState => {
-      const newShoppingList= prevState.shoppingList.filter((value) => {
+    this.setState(prevState => {
+      const newShoppingList = prevState.shoppingList.filter((value) => {
         return item != value;
       })
       return {
@@ -32,14 +32,27 @@ const newShoppingList = [...prevState.shoppingList, item];
     })
   }
 
-  
+  moveItemBackToShoppingList = (item) => {
+    this.setState(prevState => {
+      const newShoppingList = [...prevState.shoppingList, item];
+      return {
+        shoppingList: newShoppingList,
+        alreadyBoughtList: prevState.alreadyBoughtList.filter((value) => {
+          return item != value;
+        })
+      };
+    })
+  }
+
+
+
   render() {
-    const {shoppingList, alreadyBoughtList} = this.state;
+    const { shoppingList, alreadyBoughtList } = this.state;
     return (
       <div>
-      <Header onItemAdded= {this.addNewItemToShoppingList}></Header>
-      <ShopList onItemRemoved = {this.moveItemToAlreadyBought}shoppingList = {shoppingList}></ShopList>
-      <AlreadyBought alreadyBoughtList = {alreadyBoughtList}></AlreadyBought>
+        <Header onItemAdded={this.addNewItemToShoppingList}></Header>
+        <ShopList onItemRemoved={this.moveItemToAlreadyBought} shoppingList={shoppingList}></ShopList>
+        <AlreadyBought onItemBack={this.moveItemBackToShoppingList} alreadyBoughtList={alreadyBoughtList}></AlreadyBought>
       </div>
     )
   }

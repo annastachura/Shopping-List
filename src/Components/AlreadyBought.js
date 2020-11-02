@@ -2,10 +2,17 @@ import React from "react";
 
 
 class AlreadyBought extends React.Component {
+
+    handleMoveBackItem = (item) => {
+        const {onItemBack} = this.props;
+        onItemBack(item);
+        
+
+    }
     render() {
         const {alreadyBoughtList} = this.props;
         const alreadyBoughtItem = alreadyBoughtList.map((item) => {
-        return <li className = "bought__item">{item}</li>
+        return <li onClick = {() => this.handleMoveBackItem(item)} className = "bought__item">{item}</li>
         })
         return (
             <div className = "bought">
