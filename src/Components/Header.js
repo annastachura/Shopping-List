@@ -20,7 +20,7 @@ class Header extends React.Component {
         
         return (
             <div class = "header">
-                <input onKeyDown = {this.onKeyPress}ref = {this.inputRef}class = "header__input"></input>
+                <input placeholder = "Co chcesz kupić?"onKeyDown = {this.onKeyPress}ref = {this.inputRef}class = "header__input"></input>
             </div>
         )
     }
