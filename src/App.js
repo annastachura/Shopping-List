@@ -2,6 +2,7 @@ import React from 'react';
 import Header from "./Components/Header";
 import ShopList from "./Components/ShopList";
 import AlreadyBought from "./Components/AlreadyBought";
+import ProductSuggestionList from "./Components/ProductSuggestionList";
 import './App.css';
 
 class App extends React.Component {
@@ -51,6 +52,7 @@ class App extends React.Component {
     return (
       <div>
         <Header onItemAdded={this.addNewItemToShoppingList}></Header>
+        <ProductSuggestionList></ProductSuggestionList>
         <ShopList onItemRemoved={this.moveItemToAlreadyBought} shoppingList={shoppingList}></ShopList>
         <AlreadyBought onItemBack={this.moveItemBackToShoppingList} alreadyBoughtList={alreadyBoughtList}></AlreadyBought>
       </div>
